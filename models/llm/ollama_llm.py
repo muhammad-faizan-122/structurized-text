@@ -35,7 +35,7 @@ class Ollama(LLM):
 
 
 class DeepSeekR1(Ollama):
-    def __init__(self, model="deepseek-r1:1.5b"):
+    def __init__(self, model="llama3.1:latest"):
         self.model = model
 
     def extract_headline(self, text):
