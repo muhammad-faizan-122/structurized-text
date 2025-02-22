@@ -19,8 +19,8 @@ class StructurizedText:
             st.session_state["logger"].info("Model already loaded.")
 
     def execute(self):
-        st.title("Structurized Text 📰")
-        input_text = st.text_area("**Enter the unstructured text**", height=200)
+        st.title("📄 Structurized Raw Text")
+        input_text = st.text_area("**Input text**", height=200)
 
         if st.button("Generate Structurized Text"):
             if input_text:
@@ -50,7 +50,7 @@ class StructurizedText:
                 st.session_state["logger"].info(
                     f"Output generated in {e - s:.2f} seconds."
                 )
-                st.subheader("Generated Structurized Text:")
+                # st.subheader("Generated Structurized Text:")
                 st.write(headline)
             else:
                 st.warning("Please enter some text to generate a headline.")

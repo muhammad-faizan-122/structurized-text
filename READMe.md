@@ -1,32 +1,56 @@
-# Structurized Raw Text
+# 📄 Structurized Raw Text
 
-Given the detail of unstructured and generate structured text by adding heading/sub-heading/bullet-points etc where necessary require to enhance structured the input text using DeepSeek-R1-Distill-Qwen-1.5B (using ollama) pretrained Language model. Goal is structurized input text without altering the input text.
+This project takes unstructured text and enhances its readability by adding headings, subheadings, bullet points, and other formatting elements where necessary. The transformation is powered by the **Llama-3.1** model (using **Ollama**). The goal is to **structure the input text without altering its content** and generate a well-formatted **PDF output**.
 
-## High level pipeline    
-raw input text -->  |HTML Converter| --> HTML output -->  |HTML to PDF| --> PDF
-                    
-## Demo
-![alt text](demo/1.png)
-![alt text](demo/2.png)
-![alt text](demo/3.png)
-## Setup
-create conda virtual environment
+## 🔹 High-Level Pipeline
+
 ```
+Raw Input Text --> | HTML Converter | --> HTML Output --> | HTML to PDF | --> PDF Output
+```
+
+## 📌 Demo
+
+![Unstructured text to Strucured text ](demo/structured_text.gif)
+
+## ⚙️ Setup
+
+### 1️⃣ Create a Conda Virtual Environment
+
+```sh
 conda create -n env_name python=3.11.11 -y
 ```
-install requirements
-```
+
+### 2️⃣ Install Dependencies
+
+```sh
 pip install -r requirements.txt
 ```
-Install ollama and pull modellocakky
 
-To install ollama refer [here](https://ollama.com/download) according to your system OS.
-To pull model use following command
-```
+### 3️⃣ Install Ollama and Pull the Model Locally
+
+- Download and install **Ollama** based on your OS by following [this guide](https://ollama.com/download).
+- Pull the required model using:
+
+```sh
 ollama run deepseek-r1:1.5b
 ```
 
-run app
-```
+### 4️⃣ Run the Application
+
+```sh
 streamlit run app.py
 ```
+
+---
+
+## ✅ To-Do List
+
+- work for long text
+- create endpoint which will take text and return html text.
+- html to pdf conversion
+
+
+
+📌 **Contributions & Feedback**
+Feel free to raise issues or contribute to the repository to improve functionality. 🚀
+
