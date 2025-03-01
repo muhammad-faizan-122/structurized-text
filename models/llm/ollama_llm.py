@@ -31,14 +31,19 @@ class Ollama(LLM):
             return output
 
         except Exception as e:
-            raise f"{self.model} failed to generate Headline due to {e}"
+            raise f"{self.model} failed to generate Structurized HTML due to {e}"
 
 
 class DeepSeekR1(Ollama):
-    def __init__(self, model="llama3.1:latest"):
+    def __init__(self, model="deepseek-r1:1.5b"):
         self.model = model
 
-    def extract_headline(self, text):
+    def get_structurize_html(self, text):
         reason = " ".join(re.findall(r"<think>(.*?)</think>", text, flags=re.DOTALL))
-        headline = re.split(r"</think>", text)[-1].strip()
-        return reason, headline
+        html_text = re.split(r"</think>", text)[-1].strip()
+        return reason, html_text
+
+
+class Llama(Ollama):
+    def __init__(self, model="llama3.1:latest"):
+        self.model = model

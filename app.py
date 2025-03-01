@@ -1,10 +1,10 @@
-from models.llm.ollama_llm import DeepSeekR1
-from models.llm.prompts.headline_generator import system_prompt, user_prompt
+from models.llm.ollama_llm import DeepSeekR1, Llama
+from models.llm.prompts.structurizer import system_prompt, user_prompt
 from prepocessing.llm import LLMTextPreprocessor
+from postprocessing.postprocess import HTMLPostprocessor
+from logger import get_logger
 import streamlit as st
 import time
-from logger import get_logger
-
 
 class StructurizedText:
     def __init__(self):
@@ -12,7 +12,7 @@ class StructurizedText:
         st.session_state["logger"] = get_logger()
         if "model" not in st.session_state:
             s = time.time()
-            st.session_state["model"] = DeepSeekR1()
+            st.session_state["model"] = Llama()
             e = time.time()
             st.session_state["logger"].info(f"Model loaded in {e - s:.2f} seconds.")
         else:
@@ -38,22 +38,25 @@ class StructurizedText:
                 )
 
                 # llm inference
-                llm_out = st.session_state["model"].generate(
+                html_text = st.session_state["model"].generate(
                     system_prompt,
                     user_prompt.format(clean_input_text),
                 )
-
-                # # postprocess
-                _, headline = st.session_state["model"].extract_headline(llm_out)
                 e = time.time()
 
                 st.session_state["logger"].info(
                     f"Output generated in {e - s:.2f} seconds."
                 )
-                # st.subheader("Generated Structurized Text:")
-                st.write(headline)
+
+                # postprocess
+                is_pdf_saved = HTMLPostprocessor().html2pdf(html_text)
+                st.session_state["logger"].info(
+                    f"PDF generation status: {is_pdf_saved}."
+                )
+
+                st.write(is_pdf_saved)
             else:
-                st.warning("Please enter some text to generate a headline.")
+                st.warning("Please enter some text to generate a structurized PDF output.")
 
 
 if __name__ == "__main__":

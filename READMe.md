@@ -24,6 +24,15 @@ conda create -n env_name python=3.11.11 -y
 
 ```sh
 pip install -r requirements.txt
+
+```
+**For Ubuntu**
+```sh
+sudo apt-get install wkhtmltopdf 
+```
+**For macOS**
+```sh
+brew install homebrew/cask/wkhtmltopdf
 ```
 
 ### 3️⃣ Install Ollama and Pull the Model Locally
