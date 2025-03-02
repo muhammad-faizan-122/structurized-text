@@ -56,8 +56,6 @@ streamlit run app.py
 
 - work for long text
 - create endpoint which will take text and return html text.
-- html to pdf conversion
-
 
 
 📌 **Contributions & Feedback**
