@@ -6,6 +6,7 @@ from logger import get_logger
 import streamlit as st
 import time
 
+
 class StructurizedText:
     def __init__(self):
         st.session_state["preprocessor"] = LLMTextPreprocessor()
@@ -56,7 +57,9 @@ class StructurizedText:
 
                 st.write(is_pdf_saved)
             else:
-                st.warning("Please enter some text to generate a structurized PDF output.")
+                st.warning(
+                    "Please enter some text to generate a structurized PDF output."
+                )
 
 
 if __name__ == "__main__":
