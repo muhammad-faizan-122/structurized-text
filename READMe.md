@@ -40,9 +40,15 @@ brew install homebrew/cask/wkhtmltopdf
 - Download and install **Ollama** based on your OS by following [this guide](https://ollama.com/download).
 - Pull the required model using:
 
+**For deepseek**
 ```sh
 ollama run deepseek-r1:1.5b
 ```
+**For llama-3.1**
+```sh
+ollama run llama3.1:latest
+```
+Got the better result on `llama-3.1`
 
 ### 4️⃣ Run the Application
 
